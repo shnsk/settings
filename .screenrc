@@ -1,0 +1,23 @@
+escape ^\a
+defscrollback 1000
+shell zsh
+
+hardstatus alwayslastline '%m/%d %02c:%s %{= .g}%{-} %L=%-w%45L>%{=u g.}%n %t%{-}%+w'
+
+# To  use mouse.   XT capability  is screen  specific, not  seen in  the system
+# termcap / terminfo.
+termcapinfo * XT
+ 
+# Z0/Z1 are also screen specific.
+termcapinfo xterm*|kterm*|screen* Z0=\E[?3h:Z1=\E[?3l
+ 
+# To use hardware status line
+termcapinfo xterm*|kterm*|screen* hs:ts=\E]0;:fs=\007:ds=\E]0;\007
+hardstatus on
+ 
+# To use 256 colors. AB/AF are also screen specific.
+termcapinfo xterm*|kterm*|screen* Co#256:pa#32767:AB=\E[48;5;%dm:AF=\E[38;5;%dm
+defbce on
+ 
+# To use resize-window
+termcapinfo xterm*|kterm*|screen* is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
