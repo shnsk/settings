@@ -3,7 +3,7 @@ compinit
 
 setopt auto_pushd
 
-PS1=%~%%
+PS1=%m:%~%%
 
 alias v='ls -lF'
 
